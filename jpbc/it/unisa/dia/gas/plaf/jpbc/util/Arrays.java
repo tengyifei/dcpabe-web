@@ -1,0 +1,34 @@
+package it.unisa.dia.gas.plaf.jpbc.util;
+
+import java.util.Arraycopy;
+
+/**
+ * @author Angelo De Caro (angelo.decaro@gmail.com)
+ */
+public class Arrays {
+
+    public static byte[] copyOf(byte[] original, int newLength) {
+        int len = Math.min(original.length, newLength);
+        byte[] copy = new byte[len];
+        Arraycopy.arraycopy_custom(original, 0, copy, 0, len);
+        return copy;
+    }
+
+    public static byte[] copyOf(byte[] original, int offset, int newLength) {
+        int len = Math.min(original.length - offset, newLength);
+        byte[] copy = new byte[len];
+        Arraycopy.arraycopy_custom(original, offset, copy, 0, len);
+        return copy;
+    }
+
+    public static byte[] copyOfRange(byte[] original, int from, int to) {
+        int newLength = to - from;
+        if (newLength < 0)
+            throw new IllegalArgumentException(from + " > " + to);
+        byte[] copy = new byte[newLength];
+        Arraycopy.arraycopy_custom(original, from, copy, 0,
+                Math.min(original.length - from, newLength));
+        return copy;
+    }
+
+}

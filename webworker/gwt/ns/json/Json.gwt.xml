@@ -1,0 +1,52 @@
+<!--
+ Copyright 2009 Brendan Kenny
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+
+<module>
+  <define-property name="JSON.support" values="native,emulated" />
+  
+  <!-- be conservative with making sure native JSON support exists. emulated
+		support will gracefully hand off to native browser support if
+		mistakenly invoked -->
+  <property-provider name="JSON.support"><![CDATA[
+    if (!!$wnd.JSON && (typeof $wnd.JSON.stringify === 'function') && (typeof $wnd.JSON.parse === 'function')) {
+		return "native";
+	} else {
+		return "emulated";
+	}
+  ]]></property-provider>
+
+  <!-- default to emulated JSON -->
+  <replace-with class='gwt.ns.json.client.impl.JsonImplEmulated'>
+    <when-type-is class='gwt.ns.json.client.impl.JsonImpl'/>
+  </replace-with>
+  
+  <!-- browsers which support native JSON -->
+  <replace-with class='gwt.ns.json.client.impl.JsonImpl'>
+    <when-type-is class='gwt.ns.json.client.impl.JsonImpl'/>
+	<all>
+		<when-property-is name="JSON.support" value="native" />
+		
+		<!-- only browsers that might have support -->
+		<any>
+			<when-property-is name="user.agent" value="gecko1_8" /> 
+			<when-property-is name='user.agent' value='ie8'/>
+			<when-property-is name='user.agent' value='safari'/>
+			<when-property-is name='user.agent' value='opera'/>
+		</any>
+	</all>
+  </replace-with>
+
+</module>

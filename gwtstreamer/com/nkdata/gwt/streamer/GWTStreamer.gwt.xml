@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='gwtstreamer'>
+  	<inherits name="com.google.gwt.user.User"/>
+  	<inherits name="com.google.gwt.http.HTTP"/>
+  	<generate-with class="com.nkdata.gwt.streamer.rebind.StreamerGenerator">
+      	<when-type-assignable class="com.nkdata.gwt.streamer.client.Streamer"/>
+  	</generate-with>
+
+	<super-source path="emu"/>
+  	<source path='client'/>
+</module>

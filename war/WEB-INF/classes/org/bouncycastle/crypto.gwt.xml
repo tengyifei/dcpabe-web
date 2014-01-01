@@ -1,0 +1,5 @@
+<module>
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='org.bouncycastle.crypto.util'/>
+  <source path="crypto"></source>
+</module> 

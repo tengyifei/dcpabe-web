@@ -1,0 +1,22 @@
+<module rename-to="ChildWorker">
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name='gwt.ns.webworker.WebWorker'/>
+  <inherits name="gwt.ns.json.Json"/>
+  <inherits name='java.io'/>
+  <inherits name='java.lang'/>
+  <inherits name='java.text'/>
+  <inherits name="org.vectomatic.libgwtfile"/>
+  <inherits name="it.unisa.dia.gas.jpbc"/>
+  <inherits name="it.unisa.dia.gas.plaf.jpbc.pairing"/>
+  <inherits name="it.unisa.dia.gas.plaf.jpbc.pairing.a1"/>
+  <inherits name="com.nkdata.gwt.streamer.GWTStreamer"/>
+  
+  <entry-point class="com.dcpabe.web.client.ChildWorker"/>
+
+  <source path='client' />
+
+  <!-- Use the Worker primary linker to package module as a Web Worker-->
+  <add-linker name="worker" />
+  <set-property name="JSON.support" value="native" />
+  <set-property name="worker.support" value="native" />
+</module>

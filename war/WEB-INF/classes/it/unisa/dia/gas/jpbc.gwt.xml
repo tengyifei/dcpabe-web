@@ -1,0 +1,5 @@
+<module>
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name="com.nkdata.gwt.streamer.GWTStreamer"/>
+  <source path="jpbc"></source>
+</module> 

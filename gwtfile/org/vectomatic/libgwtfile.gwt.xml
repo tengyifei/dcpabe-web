@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.5.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.5.0/distro-source/core/src/gwt-module.dtd">
+<module>
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.google.gwt.dom.DOM' />
+	<inherits name='com.google.gwt.xml.XML' />
+	<source path="file" />
+	<source path="dnd" />
+	<source path="arrays" />
+	
+	<!-- Default implementation -->
+	<replace-with class="org.vectomatic.file.impl.SliceImplStandard">
+		<when-type-is class="org.vectomatic.file.impl.SliceImpl" />
+	</replace-with>
+    <!-- Mozilla implementation -->
+	<replace-with class="org.vectomatic.file.impl.SliceImplMozilla">
+		<when-type-is class="org.vectomatic.file.impl.SliceImpl" />
+		<any>
+			<when-property-is name="user.agent" value="gecko" />
+			<when-property-is name="user.agent" value="gecko1_8" />
+		</any>
+	</replace-with>
+    <!-- WebKit implementation -->
+	<replace-with class="org.vectomatic.file.impl.SliceImplWebkit">
+		<when-type-is class="org.vectomatic.file.impl.SliceImpl" />
+		<any>
+			<when-property-is name="user.agent" value="safari" />
+		</any>
+	</replace-with>
+</module>

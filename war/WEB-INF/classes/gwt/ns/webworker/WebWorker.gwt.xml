@@ -1,0 +1,51 @@
+<!--                                                                        -->
+<!-- Copyright 2010 Brendan Kenny                                           -->
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); you    -->
+<!-- may not use this file except in compliance with the License. You may   -->
+<!-- may obtain a copy of the License at                                    -->
+<!--                                                                        -->
+<!-- http://www.apache.org/licenses/LICENSE-2.0                             -->
+<!--                                                                        -->
+<!-- Unless required by applicable law or agreed to in writing, software    -->
+<!-- distributed under the License is distributed on an "AS IS" BASIS,      -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or        -->
+<!-- implied. License for the specific language governing permissions and   -->
+<!-- limitations under the License.                                         -->
+
+<module>
+  <inherits name="com.google.gwt.core.Core" />
+  
+  <!-- detect the capability to run Workers natively. if hosted, emulate    -->
+  <define-property name="worker.support" values="native,emulated" />
+  <property-provider name="worker.support"><![CDATA[
+    if (!!$wnd.Worker && !isHostedMode()) {
+		return "native";
+	} else {
+		return "emulated";
+	}
+  ]]></property-provider>
+  
+  <!-- linker for loading a module to run as a Web Worker -->
+  <define-linker name="worker"
+    class="gwt.ns.webworker.linker.WorkerModuleLinker" />
+  
+  <!-- compiles a specified module as Worker and inserts into current module -->
+  <define-linker name="workerCompilation"
+    class="gwt.ns.webworker.linker.WorkerCompilationLinker" />
+
+  <!-- default to possibility of native workers -->
+  <generate-with class="gwt.ns.webworker.rebind.NativeWorkerFactoryGenerator">
+    <when-type-assignable class="gwt.ns.webworker.client.WorkerFactory" />
+  </generate-with>
+  
+  <!-- emulated workers when no support -->
+  <!-- collapse some older UA permutations -->
+  <generate-with class="gwt.ns.webworker.rebind.EmulatedWorkerFactoryGenerator">
+    <when-type-assignable class="gwt.ns.webworker.client.WorkerFactory" />
+    <any>
+      <when-property-is name="worker.support" value="emulated" />
+      <when-property-is name="user.agent" value="gecko" /> 
+      <when-property-is name='user.agent' value='ie6'/>
+    </any>
+  </generate-with>
+</module>

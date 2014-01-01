@@ -1,0 +1,6 @@
+<module>
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='it.unisa.dia.gas.plaf.jpbc.field.base'/>
+  <inherits name='it.unisa.dia.gas.plaf.jpbc.util'/>
+  <source path="z"></source>
+</module> 

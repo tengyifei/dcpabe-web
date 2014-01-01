@@ -1,0 +1,13 @@
+<module>
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='java.security'/>
+  <inherits name='java.util'/>
+  <inherits name='java.io'/>
+  <inherits name='it.unisa.dia.gas.plaf.jpbc.field.z'/>
+  <inherits name='it.unisa.dia.gas.plaf.jpbc.field.curve'/>
+  <inherits name='it.unisa.dia.gas.plaf.jpbc.field.quadratic'/>
+  <inherits name='it.unisa.dia.gas.plaf.jpbc.field.gt'/>
+  <inherits name='it.unisa.dia.gas.plaf.jpbc.util.io'/>
+  <inherits name='it.unisa.dia.gas.plaf.jpbc.util.math'/>
+  <source path="pairing"></source>
+</module> 

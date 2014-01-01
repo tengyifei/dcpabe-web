@@ -1,0 +1,24 @@
+<module rename-to="main">
+	<inherits name="com.google.gwt.user.User"/>
+	<inherits name='java.io'/>
+	<inherits name='java.lang'/>
+	<inherits name='java.text'/>
+	<inherits name="it.unisa.dia.gas.jpbc"/>
+	<inherits name="it.unisa.dia.gas.plaf.jpbc.pairing"/>
+	<inherits name="it.unisa.dia.gas.plaf.jpbc.pairing.a1"/>
+	<inherits name="org.vectomatic.libgwtfile"/>
+	<inherits name='gwt.ns.webworker.WebWorker'/>
+  	<inherits name="gwt.ns.json.Json"/>
+  	<inherits name="com.nkdata.gwt.streamer.GWTStreamer"/>
+	<entry-point class="com.dcpabe.web.client.Main"/>
+	
+	<source path="client"/>
+
+	<add-linker name="workerCompilation" />
+    <!-- Changing the linker is only necessary if you want to try out SuperDevMode -->
+    <add-linker name="xsiframe"/>
+    
+    <set-configuration-property name="devModeRedirectEnabled" value="true"/>
+    <set-property name="worker.support" value="native" />
+    <set-property name="JSON.support" value="native" />
+</module>

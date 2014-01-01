@@ -1,0 +1,6 @@
+<module>
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='org.bouncycastle.crypto.prng'/>
+  <inherits name='org.bouncycastle.crypto.digests'/>
+  <source path="security"></source>
+</module> 
